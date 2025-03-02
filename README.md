@@ -63,4 +63,28 @@ fastapi-matchmaking-app/
 | `DELETE` | `/users/{user_id}` | Delete a user |
 | `GET` | `/users/{user_id}/matches` | Get best matches for a user |
 
+
+## 📊 Match Score Calculation
+
+The matchmaking algorithm evaluates user compatibility based on **interests, age similarity, and location**.
+
+### **Formula**
+```
+Match % = (INTEREST_WEIGHT × Interest Score) 
+        + (AGE_WEIGHT × Age Score) 
+        + (City Bonus)
+```
+
+### **Scoring Breakdown**
+- **Interests Match (60%)** → NLP & Fuzzy Matching to compare user interests.
+- **Age Similarity (30%)**
+  - `100%` if age difference ≤ **2 years**
+  - `50%` if age difference ≤ **5 years**
+  - `0%` if age difference > **5 years**
+- **Same City Bonus (+10 points)** → Extra points if users are from the same city.
+
+
+### **Why This Project?**
+With a structured matchmaking system, this project aims to enhance meaningful connections by considering interests, age compatibility, and location factors.
+
 **"Built with ❤️ using FastAPI to make meaningful connections happen!"** 🚀
